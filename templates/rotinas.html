@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Rotinas — Barnabé Ops{% endblock %}
+{% block content %}
+<section class="hero compact">
+    <div>
+        <p class="eyebrow">Semana operacional</p>
+        <h1>Rotinas da semana</h1>
+        <p>Visualização por dia, com checklists locais e blocos de trabalho.</p>
+    </div>
+</section>
+
+<section class="card-grid">
+    {% for dia in dias_ordem %}
+        {% set item = rotinas[dia] %}
+        <article class="card">
+            <div class="card-top">
+                <span class="pill">Dia</span>
+                <span class="pill pill-soft">{{ item.blocos|length }} blocos</span>
+            </div>
+            <h2>{{ rotulos[dia] }}</h2>
+            <p>{{ item.observacao }}</p>
+            <div class="card-footer">
+                <span>Checklist local</span>
+                <a href="{{ url_for('rotina_dia', dia=dia) }}">Abrir rotina</a>
+            </div>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}
