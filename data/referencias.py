@@ -1,10 +1,10 @@
-GUIA_SABORES = [{'simbolo': '○', 'nome': 'Três Queijos'},
+GUIA_SABORES = [{'simbolo': '', 'nome': 'Três Queijos'}, #removi o emoji do queijo pois é só um circulo vazio
  {'simbolo': 'F', 'nome': 'Frango'},
  {'simbolo': 'C', 'nome': 'Camarão'},
  {'simbolo': 'I', 'nome': 'Charque com Catupiry'},
  {'simbolo': 'G', 'nome': 'Goiabada com Queijo'},
  {'simbolo': 'P', 'nome': 'Palmito'},
- {'simbolo': '◉', 'nome': 'Banana com Canela'},
+ {'simbolo': '⁂', 'nome': 'Banana com Canela'}, #coloquei também o ⁂ 
  {'simbolo': 'Q', 'nome': 'Queijo do Reino'},
  {'simbolo': 'B', 'nome': 'Bacalhau'},
  {'simbolo': 'X', 'nome': 'Chocolate'},
