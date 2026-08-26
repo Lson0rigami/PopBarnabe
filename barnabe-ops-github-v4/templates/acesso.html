@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}Acesso — Barnabé Ops{% endblock %}{% block content %}
+<section class="access-wrap"><div class="access-card"><img src="{{ url_for('static', filename='img/logo-barnabe.png') }}" alt="Empadinhas Barnabé"><p class="eyebrow">Acesso interno</p><h1>Barnabé Ops</h1><p>Digite o PIN compartilhado do setor. Este PIN é lembrado no tablet durante a sessão.</p>{% if error %}<div class="access-error">{{ error }}</div>{% endif %}<form method="post"><input name="pin" inputmode="numeric" autocomplete="current-password" placeholder="••••" autofocus><button class="primary-link" type="submit">Entrar</button></form></div></section>
+{% endblock %}

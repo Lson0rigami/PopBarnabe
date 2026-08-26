@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% from "_ops_macros.html" import task_card %}
+{% block title %}{{ dia_label }} — Barnabé Ops{% endblock %}
+{% block content %}
+<a class="back-link" href="{{ url_for('rotinas') }}">← Voltar para rotinas</a>
+<section class="hero detail"><div><p class="eyebrow">Rotina semanal</p><h1>{{ dia_label }}</h1><p>{{ rotina.observacao }}</p></div></section>
+<section class="panel ops-board" data-ops-board data-day="{{ dia }}" data-work-date="{{ work_date }}">
+    <div class="panel-header"><div><p class="panel-kicker">Operação</p><h2>Tarefas do dia</h2></div><a class="ghost-button" href="{{ url_for('painel', dia=dia) }}">Painel</a></div>
+    {% for bloco in rotina.blocos %}
+    <article class="task-block"><div class="task-block-header"><h3>{{ bloco.titulo }}</h3><span>{{ bloco.tarefas|length }} atividades</span></div><div class="ops-task-list">
+        {% for tarefa in bloco.tarefas %}{% set cfg = task_config[tarefa.id] %}{{ task_card(tarefa, cfg, url_for('procedimento', slug=tarefa.pop_slug) if tarefa.pop_slug else None) }}{% endfor %}
+    </div></article>
+    {% endfor %}
+</section>
+<section class="panel extras-panel"><div class="panel-header"><div><p class="panel-kicker yellow-kicker">Complementares</p><h2>Atividades disponíveis</h2></div></div><div class="ops-task-list extra-grid">
+    {% for extra in extras %}{% set ecfg={'points':extra.pontos,'requires_validation':extra.validacao,'priority':'fire' if extra.pontos >= 12 else ('hot' if extra.pontos >= 8 else 'normal')} %}{{ task_card(extra, ecfg, url_for('procedimento', slug=extra.pop_slug) if extra.pop_slug else None, 'extra', extra.descricao) }}{% endfor %}
+</div></section>
+{% endblock %}
